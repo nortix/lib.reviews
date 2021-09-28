@@ -62,3 +62,27 @@
 {{/if}}
 </div>
 </div>
+<!-- JSON for the review, https://schema.org/Review -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{{mlString review.thing.label}}}",
+  "description": "{{{mlString thing.description}}}",
+  "review": [
+    {
+      "@type": "Review",
+      "author": "{{{review.creator}}}",
+      "datePublished": "{{{review.createdOn}}}",
+      "reviewBody": "{{{summarize (mlString review.html false) 250}}}",
+      "name": "{{{mlString review.title}}}",
+      "reviewRating": {
+        "@type": "Rating",
+        "bestRating": "5",
+        "ratingValue": "1",
+        "worstRating": "1"
+      }
+    }
+  ]
+}
+</script>
